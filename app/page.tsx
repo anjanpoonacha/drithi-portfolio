@@ -1,12 +1,13 @@
+import Link from "next/link";
 import { CherryBlossomBackground } from "@/components/CherryBlossomBackground";
 import { DecorativeBorder } from "@/components/DecorativeBorder";
 import { FadeInSection } from "@/components/FadeInSection";
 import { AnimatedButton } from "@/components/AnimatedButton";
-import { BookOpen, Music } from "lucide-react";
+import { BookOpen, Music, Sparkles, Flower } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-center p-8">
+    <main className="relative min-h-screen flex flex-col items-center justify-center p-8 pt-28">
       {/* Cherry blossom petals falling in background */}
       <CherryBlossomBackground />
       
@@ -20,17 +21,28 @@ export default function Home() {
           <div className="text-center space-y-6">
             {/* Title fades in first */}
             <FadeInSection>
-              <h1 className="text-6xl md:text-8xl sparkle-text">
+              <h1 
+                className="text-6xl md:text-8xl sparkle-text break-words"
+                style={{ 
+                  color: '#7D3C98',
+                  fontWeight: 700,
+                  lineHeight: 1.3,
+                  paddingBottom: '0.15em',
+                  overflow: 'visible'
+                }}
+              >
                 Drithi Sparkle
               </h1>
             </FadeInSection>
 
             {/* Description fades in with slight delay */}
             <FadeInSection delay={0.2}>
-              <p className="text-xl md:text-2xl text-purple-dark">
-                ✨ Welcome to my world of stories ✨
-              </p>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+              <div className="flex items-center justify-center gap-2 text-xl md:text-2xl text-purple-900">
+                <Sparkles className="w-6 h-6 text-purple-primary" />
+                <p className="inline">Welcome to my world of stories</p>
+                <Sparkles className="w-6 h-6 text-purple-primary" />
+              </div>
+              <p className="text-lg text-gray-900 max-w-2xl mx-auto mt-4" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}>
                 Do you like to read my books?
               </p>
             </FadeInSection>
@@ -38,31 +50,48 @@ export default function Home() {
             {/* Buttons fade in last with sparkle effects */}
             <FadeInSection delay={0.4}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <AnimatedButton 
-                  showSparkle={true}
-                  variant="default"
-                  size="lg"
-                  className="bg-purple-primary hover:bg-purple-dark text-white px-8 py-3 rounded-full"
-                >
-                  <BookOpen className="h-5 w-5" />
-                  Browse Books
-                </AnimatedButton>
-                <AnimatedButton 
-                  showSparkle={false}
-                  variant="default"
-                  size="lg"
-                  className="bg-pink-accent hover:bg-pink-600 text-white px-8 py-3 rounded-full"
-                >
-                  <Music className="h-5 w-5" />
-                  Music
-                </AnimatedButton>
+                <Link href="/books">
+                  <AnimatedButton 
+                    showSparkle={true}
+                    size="lg"
+                    className="bg-purple-primary hover:bg-purple-dark text-white px-8 py-3 rounded-full shadow-lg transition-all"
+                  >
+                    <BookOpen className="h-5 w-5" />
+                    Browse Books
+                  </AnimatedButton>
+                </Link>
+                <Link href="/books">
+                  <AnimatedButton 
+                    showSparkle={false}
+                    size="lg"
+                    className="bg-pink-accent hover:bg-pink-600 text-white px-8 py-3 rounded-full shadow-lg transition-all"
+                  >
+                    <Music className="h-5 w-5" />
+                    Music
+                  </AnimatedButton>
+                </Link>
               </div>
             </FadeInSection>
             
             {/* Footer with subtle fade */}
             <FadeInSection delay={0.6}>
-              <div className="mt-12 text-sm text-gray-500">
-                <p>🌸 A story reading website by Drithi (Age 13) 🌸</p>
+              <div className="mt-12 text-sm text-gray-900 flex items-center justify-center gap-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}>
+                <Flower className="w-4 h-4 text-pink-accent" />
+                <p>
+                  A story reading website by Drithi (Age {
+                    (() => {
+                      const today = new Date();
+                      const birthDate = new Date(2012, 4, 15); // May is month 4 (0-indexed)
+                      let age = today.getFullYear() - birthDate.getFullYear();
+                      const monthDiff = today.getMonth() - birthDate.getMonth();
+                      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                        age--;
+                      }
+                      return age;
+                    })()
+                  })
+                </p>
+                <Flower className="w-4 h-4 text-pink-accent" />
               </div>
             </FadeInSection>
           </div>

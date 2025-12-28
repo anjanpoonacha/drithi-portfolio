@@ -1,0 +1,86 @@
+[
+  {
+    "id": "the-library-of-lost-dreams",
+    "title": "The Library of Lost Dreams",
+    "labels": ["Fantasy", "Adventure"],
+    "characterPhoto": "/images/characters/the-library-of-lost-dreams.svg",
+    "coverImage": "/images/covers/the-library-of-lost-dreams.svg",
+    "description": "When Maya discovers a hidden library, she finds books that contain people's forgotten dreams.",
+    "story": "Maya loved exploring old buildings in her neighborhood. One rainy afternoon, she stumbled upon a mysterious door hidden behind ivy vines in the abandoned mansion on Maple Street. The door creaked open, revealing a magnificent library with shelves that stretched endlessly upward, disappearing into clouds.\n\nEach book glowed with a soft, colorful light. Maya pulled one down and gasped as she opened it—inside were moving pictures of a little girl dreaming of becoming an astronaut, but the dream had faded away over the years. The librarian, a kind old woman with silver hair, explained that these were dreams people had forgotten or given up on.\n\nMaya realized she could help. She began returning the dream books to their owners, reminding them it's never too late to chase what makes your heart sing. One by one, she watched as people's eyes lit up with renewed hope. The library taught her that dreams are precious, and sometimes all they need is someone who believes in them again.",
+    "author": "Drithi",
+    "createdAt": "2025-12-15T10:00:00Z",
+    "featured": true
+  },
+  {
+    "id": "whiskers-and-wings",
+    "title": "Whiskers and Wings",
+    "labels": ["Friendship", "Adventure"],
+    "characterPhoto": "/images/characters/whiskers-and-wings.svg",
+    "coverImage": "/images/covers/whiskers-and-wings.svg",
+    "description": "An unlikely friendship blooms between a grumpy cat and a cheerful bluebird.",
+    "story": "Oliver the cat had always believed that birds were meant to be chased, not befriended. He spent his days lounging in the sun and scowling at anyone who disturbed his peace. That all changed when a tiny bluebird named Pip crashed into his window during a storm.\n\nPip had injured her wing and couldn't fly home. At first, Oliver grumbled about having to share his cozy space. But as days passed, he found himself enjoying Pip's cheerful songs and funny stories about life in the sky. Pip taught Oliver that the world looked different from above—more beautiful and full of possibilities. Oliver taught Pip that sometimes it's okay to slow down and enjoy the simple things.\n\nWhen Pip's wing healed, Oliver worried he'd be alone again. But Pip promised to visit every single day. Now, you can often see an unusual pair—a cat and a bird—sitting on the windowsill together, watching the world go by. Their friendship proved that the best friends are sometimes the ones you never expected to meet.",
+    "author": "Drithi",
+    "createdAt": "2025-12-10T14:30:00Z",
+    "featured": false
+  },
+  {
+    "id": "the-great-cookie-mystery",
+    "title": "The Great Cookie Mystery",
+    "labels": ["Mystery", "Friendship"],
+    "characterPhoto": "/images/characters/the-great-cookie-mystery.svg",
+    "coverImage": "/images/covers/the-great-cookie-mystery.svg",
+    "description": "When Grandma's famous cookies keep disappearing, Detective Emma is on the case!",
+    "story": "Emma's grandmother made the most delicious chocolate chip cookies in the entire neighborhood. But lately, something strange was happening—cookies were vanishing from the cooling rack! Emma decided to solve this mystery once and for all. She grabbed her detective notebook and magnifying glass, ready to investigate.\n\nShe looked for clues everywhere: crumbs on the floor, tiny footprints, suspicious alibis. Her brother claimed he was playing video games. Her dad said he was working in the garage. Even the family dog, Biscuit, seemed innocent (though his tail wagged suspiciously). Then Emma noticed something peculiar—a trail of crumbs leading to the backyard.\n\nFollowing the trail, she discovered a family of squirrels who had been sneaking in through a loose window screen! Instead of being angry, Grandma laughed and decided to bake an extra batch just for the squirrels, placing them in a special box outside. Emma learned that some mysteries have the sweetest solutions, and sharing makes everything better.",
+    "author": "Drithi",
+    "createdAt": "2025-11-28T09:15:00Z",
+    "featured": true
+  },
+  {
+    "id": "starlight-the-flying-unicorn",
+    "title": "Starlight the Flying Unicorn",
+    "labels": ["Fantasy"],
+    "characterPhoto": "/images/characters/starlight-the-flying-unicorn.svg",
+    "coverImage": "/images/covers/starlight-the-flying-unicorn.svg",
+    "description": "A young unicorn who's afraid of heights must find courage to save her magical realm.",
+    "story": "In the kingdom of Celestia, all unicorns could fly—except for Starlight. She was born with beautiful silver wings, but she was terrified of leaving the ground. While other young unicorns soared through the clouds, Starlight stayed behind, feeling embarrassed and alone. Her wings sparkled with unused magic, but fear kept them folded tight.\n\nOne day, dark clouds began swallowing the sun, threatening to plunge Celestia into eternal darkness. The ancient Sky Crystal, which powered their world's light, was fading. It floated high in the sky, and only someone with a pure heart could reach it and recharge its magic. All the brave unicorns tried, but the darkness pushed them back.\n\nStarlight realized that sometimes courage isn't about not being afraid—it's about doing what's right even when you are scared. She spread her wings and flew higher than anyone had ever flown before. Her fear transformed into determination, and her wings glowed brighter with each beat. She touched the Sky Crystal, and light flooded back into Celestia. Starlight learned that being brave doesn't mean you're never afraid; it means you try anyway.",
+    "author": "Drithi",
+    "createdAt": "2025-12-05T16:45:00Z",
+    "featured": false
+  },
+  {
+    "id": "the-kindness-seed",
+    "title": "The Kindness Seed",
+    "labels": ["Moral Tales", "Fantasy"],
+    "characterPhoto": "/images/characters/the-kindness-seed.svg",
+    "coverImage": "/images/covers/the-kindness-seed.svg",
+    "description": "A magical seed teaches Lily that small acts of kindness can grow into something extraordinary.",
+    "story": "Lily found a strange, glowing seed in her garden one morning. When she planted it, nothing happened. Disappointed, she almost forgot about it. Then a wise old gardener told her the secret: \"This is a Kindness Seed. It only grows when you do something kind for someone else.\"\n\nCurious, Lily decided to try. She helped her elderly neighbor carry groceries, and a tiny sprout appeared. She shared her lunch with a new student at school, and a small leaf unfurled. Each act of kindness made the plant grow—helping her little brother with homework, donating toys to charity, standing up for someone being teased. The plant grew taller and more beautiful with every good deed.\n\nFinally, it bloomed into the most magnificent tree anyone had ever seen, with flowers in every color of the rainbow. The tree produced seeds that Lily shared with everyone in her town. Soon, gardens of kindness grew everywhere. Lily learned that kindness isn't just one big action—it's many small choices we make every day. And when we all share kindness, the whole world becomes more beautiful.",
+    "author": "Drithi",
+    "createdAt": "2025-11-20T11:00:00Z",
+    "featured": true
+  },
+  {
+    "id": "cherry-blossom-adventure",
+    "title": "The Cherry Blossom Adventure",
+    "labels": ["Adventure", "Fantasy"],
+    "characterPhoto": "/images/characters/cherry-blossom-adventure.svg",
+    "coverImage": "/images/covers/cherry-blossom-adventure.svg",
+    "description": "When petals start falling upward, Kenji discovers a secret world hidden in the cherry trees.",
+    "story": "Kenji loved sitting under the ancient cherry blossom tree in his backyard. But one spring morning, something impossible happened—the petals began falling upward instead of down! Following their path, he discovered they were forming a staircase into the sky. Unable to resist, Kenji climbed up and found himself in a magical forest where cherry trees grew on floating islands.\n\nHe met the Petal Guardians, tiny creatures who maintained the balance between the sky world and the earth. They explained that the trees were sick because people had forgotten to appreciate nature's beauty. The connection between the worlds was breaking. Kenji wanted to help, but what could one person do?\n\nThe Guardian Elder smiled and gave him magical seeds. Back on Earth, Kenji planted them and taught others to care for trees and nature. He shared stories about the sky forest, inspiring people to protect the environment. Slowly, the cherry trees in both worlds began to heal. Kenji learned that taking care of our planet isn't just about big actions—it starts with noticing and appreciating the beauty around us every single day.",
+    "author": "Drithi",
+    "createdAt": "2025-12-01T13:20:00Z",
+    "featured": false
+  },
+  {
+    "id": "the-wishing-well",
+    "title": "The Wishing Well",
+    "labels": ["Moral Tales", "Adventure"],
+    "characterPhoto": "/images/characters/the-wishing-well.svg",
+    "coverImage": "/images/covers/the-wishing-well.svg",
+    "description": "Sophie discovers that the old well grants wishes, but not in the way she expected.",
+    "story": "Sophie discovered an old stone well hidden in the forest behind her house. According to legend, it granted wishes to those pure of heart. Excited, she threw in a coin and wished for a mountain of candy. The next day, she found candy everywhere—but so much that she felt sick just looking at it. Her second wish for endless summer vacation left her bored and missing her friends after just a week.\n\nFrustrated, Sophie visited the well again, demanding to know why her wishes weren't making her happy. The well's guardian, a gentle spirit made of water and starlight, appeared. She explained that the well didn't grant wishes to make you happy—it granted them to teach you what truly matters. Sophie had to think carefully about her next wish.\n\nThis time, Sophie wished for the wisdom to know what would make her truly happy. The well sparkled, and Sophie suddenly understood: happiness wasn't about having everything you want. It was about appreciating what you have, spending time with people you love, and working toward meaningful goals. She realized the well had been teaching her all along. Sometimes the best gifts aren't things—they're lessons that help us grow.",
+    "author": "Drithi",
+    "createdAt": "2025-11-15T15:30:00Z",
+    "featured": false
+  }
+]
