@@ -85,12 +85,17 @@ const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
             {/* Title */}
             <h3
               className={cn(
-                "font-semibold text-lg leading-tight",
+                "font-semibold text-lg",
                 "text-[var(--purple-primary)]",
-                "line-clamp-2",
                 "group-hover:text-[var(--purple-dark)]",
-                "transition-colors duration-300"
+                "transition-colors duration-300",
+                "min-h-[3em]" // Reserve space for up to 2 lines with breathing room
               )}
+              style={{ 
+                lineHeight: 1.5,
+                paddingBottom: '0.2em',
+                overflow: 'visible'
+              }}
               title={story.title}
             >
               {story.title}

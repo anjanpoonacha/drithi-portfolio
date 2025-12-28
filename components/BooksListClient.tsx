@@ -37,7 +37,7 @@ export function BooksListClient({
   const hasActiveFilters = searchQuery.trim() !== "" || selectedCategory !== null;
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative pt-24">
       <CherryBlossomBackground />
 
       <div className="relative z-10">
@@ -46,7 +46,7 @@ export function BooksListClient({
           <FadeInSection>
             <div className="text-center mb-12">
               <h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-pacifico bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 bg-clip-text text-transparent"
+                className="text-4xl md:text-5xl lg:text-6xl sparkle-text mb-4"
                 style={{
                   lineHeight: 1.3,
                   paddingBottom: '0.2em',

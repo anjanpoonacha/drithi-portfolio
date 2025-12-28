@@ -23,6 +23,9 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Pacifico', cursive;
+    /* FIX: Add room for descenders in hand-written font */
+    line-height: 1.5;
+    padding-bottom: 0.1em;
   }
 }
 
@@ -79,6 +82,13 @@
     animation: shimmer 3s linear infinite;
     /* Strong shadow for visibility */
     filter: drop-shadow(0 2px 4px rgba(125, 60, 152, 0.3));
+    
+    /* FIX: Accommodate hand-written font descenders (p, y, g, j, q) */
+    line-height: 1.5 !important;
+    padding-top: 0.15em;
+    padding-bottom: 0.3em; /* Extra room for descenders + drop-shadow */
+    overflow: visible !important;
+    display: inline-block; /* Ensure padding is respected */
   }
 
   /* Ensure visibility in all browsers */
@@ -89,6 +99,13 @@
       background: none !important;
       text-shadow: 0 2px 8px rgba(155, 89, 182, 0.4);
     }
+  }
+
+  /* FIX: Pacifico font descenders for story titles */
+  .font-pacifico {
+    line-height: 1.5 !important;
+    padding-bottom: 0.2em;
+    overflow: visible !important;
   }
 
   /* Soft glow utility for decorative elements */

@@ -21,16 +21,7 @@ export default function Home() {
           <div className="text-center space-y-6">
             {/* Title fades in first */}
             <FadeInSection>
-              <h1 
-                className="text-6xl md:text-8xl sparkle-text break-words"
-                style={{ 
-                  color: '#7D3C98',
-                  fontWeight: 700,
-                  lineHeight: 1.3,
-                  paddingBottom: '0.15em',
-                  overflow: 'visible'
-                }}
-              >
+              <h1 className="text-6xl md:text-8xl sparkle-text break-words">
                 Drithi Sparkle
               </h1>
             </FadeInSection>
