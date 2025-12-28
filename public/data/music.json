@@ -1,0 +1,42 @@
+[
+  {
+    "id": "track-001",
+    "title": "Cherry Blossom Dreams",
+    "artist": "Drithi",
+    "filePath": "/music/track-1.mp3",
+    "duration": 187,
+    "coverArt": "/images/music/cover-1.jpg"
+  },
+  {
+    "id": "track-002",
+    "title": "Storybook Melody",
+    "artist": "Drithi",
+    "filePath": "/music/track-2.mp3",
+    "duration": 224,
+    "coverArt": "/images/music/cover-2.jpg"
+  },
+  {
+    "id": "track-003",
+    "title": "Magic Pages",
+    "artist": "Drithi",
+    "filePath": "/music/track-3.mp3",
+    "duration": 156,
+    "coverArt": "/images/music/cover-3.jpg"
+  },
+  {
+    "id": "track-004",
+    "title": "Peaceful Reading",
+    "artist": "Drithi",
+    "filePath": "/music/track-4.mp3",
+    "duration": 203,
+    "coverArt": "/images/music/cover-4.jpg"
+  },
+  {
+    "id": "track-005",
+    "title": "Sunset Tales",
+    "artist": "Drithi",
+    "filePath": "/music/track-5.mp3",
+    "duration": 241,
+    "coverArt": "/images/music/cover-5.jpg"
+  }
+]
