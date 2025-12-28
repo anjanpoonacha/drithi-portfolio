@@ -92,7 +92,7 @@ export function BooksListClient({
 
           {/* Stories Grid */}
           {filteredStories.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
               {filteredStories.map((story, index) => (
                 <FadeInSection key={story.id} delay={0.1 * (index % 8)}>
                   <BookCard story={story} index={index} />

@@ -30,16 +30,18 @@ const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
           "border-2 border-transparent",
           "bg-gradient-to-br from-white via-white to-purple-50",
           "hover:border-[var(--purple-primary)]",
-          "focus-within:ring-2 focus-within:ring-[var(--purple-primary)] focus-within:ring-offset-2"
+          "focus-within:ring-2 focus-within:ring-[var(--purple-primary)] focus-within:ring-offset-2",
+          "flex flex-row sm:flex-col",
+          "h-auto sm:h-full"
         )}
       >
         <Link
           href={`/books/${story.id}`}
-          className="block focus:outline-none"
+          className="flex flex-row sm:flex-col w-full focus:outline-none"
           aria-label={`Read ${story.title} by ${story.author}`}
         >
           {/* Book Cover Image */}
-          <div className="relative w-full aspect-[3/4] overflow-hidden rounded-t-xl bg-gradient-to-br from-purple-100 to-pink-100">
+          <div className="relative w-24 sm:w-full h-32 sm:aspect-[3/4] sm:h-auto overflow-hidden rounded-l-xl sm:rounded-l-none sm:rounded-t-xl bg-gradient-to-br from-purple-100 to-pink-100 flex-shrink-0">
             {!imageError ? (
               <Image
                 src={story.coverImage}
@@ -81,20 +83,20 @@ const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
           </div>
 
           {/* Content Section */}
-          <div className="p-4 space-y-3">
+          <div className="p-3 sm:p-4 space-y-2 sm:space-y-3 flex-1 flex flex-col justify-between">
             {/* Title */}
             <h3
               className={cn(
-                "font-semibold text-lg",
+                "font-semibold text-sm sm:text-lg",
                 "text-[var(--purple-primary)]",
                 "group-hover:text-[var(--purple-dark)]",
                 "transition-colors duration-300",
-                "min-h-[3em]" // Reserve space for up to 2 lines with breathing room
+                "line-clamp-2 sm:min-h-[3em]"
               )}
               style={{ 
                 lineHeight: 1.5,
                 paddingBottom: '0.2em',
-                overflow: 'visible'
+                overflow: 'hidden'
               }}
               title={story.title}
             >
@@ -104,8 +106,8 @@ const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
             {/* Description */}
             <p
               className={cn(
-                "text-sm text-gray-600 leading-relaxed",
-                "line-clamp-3"
+                "text-xs sm:text-sm text-gray-600 leading-relaxed",
+                "line-clamp-2 sm:line-clamp-3"
               )}
               title={story.description}
             >
@@ -113,7 +115,7 @@ const BookCard = React.forwardRef<HTMLDivElement, BookCardProps>(
             </p>
 
             {/* Category Badges */}
-            <div className="flex flex-wrap gap-2 pt-1">
+            <div className="flex flex-wrap gap-1 sm:gap-2 pt-1">
               {story.labels.map((label) => (
                 <Badge
                   key={label}
