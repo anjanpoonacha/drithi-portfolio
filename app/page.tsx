@@ -7,7 +7,7 @@ import { BookOpen, Music, Sparkles, Flower } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-center p-8 pt-28">
+    <main className="relative min-h-screen flex flex-col items-center justify-center p-6 pt-20">
       {/* Cherry blossom petals falling in background */}
       <CherryBlossomBackground />
       
@@ -16,12 +16,12 @@ export default function Home() {
         <DecorativeBorder 
           variant="soft" 
           showAnimation={true}
-          className="p-8 md:p-12"
+          className="p-6 md:p-12"
         >
-          <div className="text-center space-y-6">
+          <div className="text-center space-y-4 sm:space-y-6">
             {/* Title fades in first */}
             <FadeInSection>
-              <h1 className="text-6xl md:text-8xl sparkle-text break-words">
+              <h1 className="text-4xl sm:text-6xl md:text-8xl sparkle-text break-words">
                 Drithi Sparkle
               </h1>
             </FadeInSection>
@@ -33,14 +33,14 @@ export default function Home() {
                 <p className="inline">Welcome to my world of stories</p>
                 <Sparkles className="w-6 h-6 text-purple-primary" />
               </div>
-              <p className="text-lg text-gray-900 max-w-2xl mx-auto mt-4" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}>
+              <p className="text-lg text-gray-900 max-w-2xl mx-auto mt-3" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}>
                 Do you like to read my books?
               </p>
             </FadeInSection>
             
             {/* Buttons fade in last with sparkle effects */}
             <FadeInSection delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8">
                 <Link href="/books">
                   <AnimatedButton 
                     showSparkle={true}
@@ -66,7 +66,7 @@ export default function Home() {
             
             {/* Footer with subtle fade */}
             <FadeInSection delay={0.6}>
-              <div className="mt-12 text-sm text-gray-900 flex items-center justify-center gap-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}>
+              <div className="mt-8 sm:mt-12 text-sm text-gray-900 flex items-center justify-center gap-2" style={{ textShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}>
                 <Flower className="w-4 h-4 text-pink-accent" />
                 <p>
                   A story reading website by Drithi (Age {

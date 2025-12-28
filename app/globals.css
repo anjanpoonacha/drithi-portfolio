@@ -255,8 +255,16 @@
   /* Animation performance optimizations */
   * {
     @apply border-border outline-ring/50;
-    transform: translateZ(0);
+    /* Removed transform: translateZ(0) - it breaks fixed positioning */
     backface-visibility: hidden;
+  }
+  
+  /* Add GPU acceleration only to animated elements */
+  .sparkle-text,
+  [class*="animate"],
+  [class*="motion"],
+  .transition-transform {
+    transform: translateZ(0);
   }
   
   body {
@@ -264,6 +272,14 @@
     font-family: 'Poppins', sans-serif;
     background-color: #FFF5F7 !important;
     color: #1a1a1a !important;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent scrolling on mobile homepage */
+  @media (max-width: 640px) {
+    body {
+      overflow-y: auto;
+    }
   }
 }
 
