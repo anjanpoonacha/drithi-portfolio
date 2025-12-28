@@ -16,17 +16,89 @@
     --bg-soft: #FFF5F7;
   }
 
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Pacifico', cursive;
   }
 }
 
+/* Custom Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(155, 89, 182, 0.3),
+                0 0 40px rgba(255, 105, 180, 0.2);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.5),
+                0 0 60px rgba(255, 105, 180, 0.3);
+  }
+}
+
 @layer utilities {
+  /* Enhanced sparkle text with shimmer animation */
   .sparkle-text {
-    background: linear-gradient(to right, #9B59B6, #FF69B4);
+    background: linear-gradient(
+      90deg,
+      #9B59B6 0%,
+      #FF69B4 25%,
+      #9B59B6 50%,
+      #FF69B4 75%,
+      #9B59B6 100%
+    );
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Soft glow utility for decorative elements */
+  .soft-glow {
+    box-shadow: 0 0 20px rgba(155, 89, 182, 0.3),
+                0 0 40px rgba(255, 105, 180, 0.2);
+    animation: glow-pulse 3s ease-in-out infinite;
+  }
+
+  /* Float animation utility */
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Z-index utilities for proper layering */
+  .z-background {
+    z-index: 0;
+  }
+
+  .z-content {
+    z-index: 10;
+  }
+
+  .z-modal {
+    z-index: 50;
   }
 }
 
@@ -141,12 +213,28 @@
 }
 
 @layer base {
+  /* Animation performance optimizations */
   * {
     @apply border-border outline-ring/50;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
+  
   body {
     @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
     background-color: #FFF5F7 !important;
+  }
+}
+
+/* Accessibility: Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
