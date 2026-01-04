@@ -14,6 +14,11 @@
     --pink-accent: #FF69B4;
     --pink-light: #FFB6C1;
     --bg-soft: #FFF5F7;
+    
+    /* Festival theme variables (dynamically set by FestivalThemeContext) */
+    --festival-primary: var(--purple-primary);
+    --festival-secondary: var(--pink-accent);
+    --festival-accent: var(--pink-light);
   }
 
   /* Smooth scroll behavior */
@@ -58,6 +63,47 @@
     opacity: 0.8;
     box-shadow: 0 0 30px rgba(155, 89, 182, 0.5),
                 0 0 60px rgba(255, 105, 180, 0.3);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translateY(-8px) translateX(4px);
+  }
+  66% {
+    transform: translateY(-4px) translateX(-4px);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-slow-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
   }
 }
 
@@ -118,6 +164,52 @@
   /* Float animation utility */
   .float-animation {
     animation: float 3s ease-in-out infinite;
+  }
+
+  /* Cherry blossom accent animations */
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulse-subtle 4s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 30s linear infinite;
+  }
+
+  .animate-spin-slow-reverse {
+    animation: spin-slow-reverse 30s linear infinite;
+  }
+
+  /* Animation delays */
+  .delay-100 {
+    animation-delay: 0.5s;
+  }
+
+  .delay-150 {
+    animation-delay: 0.75s;
+  }
+
+  .delay-200 {
+    animation-delay: 1s;
+  }
+
+  .delay-250 {
+    animation-delay: 1.25s;
+  }
+
+  .delay-300 {
+    animation-delay: 1.5s;
+  }
+
+  .delay-500 {
+    animation-delay: 2.5s;
+  }
+
+  .delay-700 {
+    animation-delay: 3.5s;
   }
 
   /* Z-index utilities for proper layering */

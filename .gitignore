@@ -50,3 +50,9 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # backup files
 *.bak
+
+# runtime settings
+/data/app-settings.json
+
+# scratch/archived documentation
+.scratch/

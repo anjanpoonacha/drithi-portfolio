@@ -39,29 +39,6 @@ export interface Story {
 }
 
 /**
- * Represents a music track for background playback
- */
-export interface MusicTrack {
-  /** Unique identifier for the track */
-  id: string;
-  
-  /** Track title */
-  title: string;
-  
-  /** Artist or composer name */
-  artist: string;
-  
-  /** Path to audio file (relative to public directory) */
-  filePath: string;
-  
-  /** Track duration in seconds */
-  duration: number;
-  
-  /** Optional path to cover art image */
-  coverArt?: string;
-}
-
-/**
  * Filter criteria for story browsing
  */
 export interface FilterOptions {
@@ -78,26 +55,6 @@ export interface FilterOptions {
 export type Category = string;
 
 /**
- * State for the music player component
- */
-export interface MusicPlayerState {
-  /** Currently playing track, or null if no track loaded */
-  currentTrack: MusicTrack | null;
-  
-  /** Whether audio is currently playing */
-  isPlaying: boolean;
-  
-  /** Volume level from 0 (muted) to 1 (full volume) */
-  volume: number;
-  
-  /** All tracks in the current playlist */
-  playlist: MusicTrack[];
-  
-  /** Index of current track in playlist */
-  currentIndex: number;
-}
-
-/**
  * Helper type for story cards/previews (excludes full story content)
  */
 export type StoryPreview = Omit<Story, 'story'>;
@@ -106,3 +63,23 @@ export type StoryPreview = Omit<Story, 'story'>;
  * Helper type for partial story updates
  */
 export type PartialStory = Partial<Story> & Pick<Story, 'id'>;
+
+/**
+ * Global settings for festival theming
+ */
+export interface GlobalSettings {
+  /** Auto-detect festival based on current date */
+  autoDetectFestival: boolean;
+  
+  /** Manually selected festival ID (used when autoDetectFestival is false) */
+  manualFestivalId: string | null;
+  
+  /** Decoration intensity level (1-5) */
+  decorationIntensity: 1 | 2 | 3 | 4 | 5;
+  
+  /** Enable/disable cherry blossom accents */
+  enableCherryBlossoms: boolean;
+  
+  /** Enable/disable festival decorations */
+  enableFestivalDecor: boolean;
+}

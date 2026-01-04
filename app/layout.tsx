@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Pacifico, Poppins } from "next/font/google";
 import "./globals.css";
-import { MusicProvider } from "@/lib/contexts/MusicContext";
-import { Navigation } from "@/components/Navigation";
-import { MusicPlayer } from "@/components/MusicPlayer";
+import { LayoutContent } from "./layout-content";
 
 const pacifico = Pacifico({
   weight: "400",
@@ -30,13 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pacifico.variable} ${poppins.variable} font-sans antialiased`}>
-        <MusicProvider>
-          <Navigation />
-          <main>
-            {children}
-          </main>
-          <MusicPlayer />
-        </MusicProvider>
+        <LayoutContent>{children}</LayoutContent>
       </body>
     </html>
   );

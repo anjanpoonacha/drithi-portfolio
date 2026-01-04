@@ -3,7 +3,7 @@ import { CherryBlossomBackground } from "@/components/CherryBlossomBackground";
 import { DecorativeBorder } from "@/components/DecorativeBorder";
 import { FadeInSection } from "@/components/FadeInSection";
 import { AnimatedButton } from "@/components/AnimatedButton";
-import { BookOpen, Music, Sparkles, Flower } from "lucide-react";
+import { BookOpen, Sparkles, Flower } from "lucide-react";
 
 export default function Home() {
   return (
@@ -40,7 +40,7 @@ export default function Home() {
             
             {/* Buttons fade in last with sparkle effects */}
             <FadeInSection delay={0.4}>
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mt-6 sm:mt-8">
+              <div className="flex justify-center mt-6 sm:mt-8">
                 <Link href="/books">
                   <AnimatedButton 
                     showSparkle={true}
@@ -49,16 +49,6 @@ export default function Home() {
                   >
                     <BookOpen className="h-5 w-5" />
                     Browse Books
-                  </AnimatedButton>
-                </Link>
-                <Link href="/books">
-                  <AnimatedButton 
-                    showSparkle={false}
-                    size="lg"
-                    className="bg-pink-accent hover:bg-pink-600 text-white px-8 py-3 rounded-full shadow-lg transition-all"
-                  >
-                    <Music className="h-5 w-5" />
-                    Music
                   </AnimatedButton>
                 </Link>
               </div>

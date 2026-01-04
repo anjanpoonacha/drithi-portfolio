@@ -4,7 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles, BookOpen, Music, Home } from "lucide-react";
+import { Menu, X, Sparkles, BookOpen, Home } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import {
@@ -23,7 +23,6 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { href: "/", label: "Home", icon: Home },
   { href: "/books", label: "Books", icon: BookOpen },
-  { href: "/music", label: "Music", icon: Music },
 ];
 
 export function Navigation() {

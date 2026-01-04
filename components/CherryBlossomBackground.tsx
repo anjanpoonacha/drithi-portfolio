@@ -102,7 +102,7 @@ export const CherryBlossomBackground: React.FC<CherryBlossomBackgroundProps> = (
       },
       particles: {
         number: {
-          value: 25,
+          value: 15,
           density: {
             enable: true,
             width: 1920,
@@ -117,13 +117,13 @@ export const CherryBlossomBackground: React.FC<CherryBlossomBackgroundProps> = (
           image: [
             {
               src: "/petals/petal-pink.svg",
-              width: 20,
-              height: 24,
+              width: 12,
+              height: 14,
             },
             {
               src: "/petals/petal-white.svg",
-              width: 20,
-              height: 24,
+              width: 12,
+              height: 14,
             },
           ],
         },
@@ -136,7 +136,7 @@ export const CherryBlossomBackground: React.FC<CherryBlossomBackgroundProps> = (
           },
         },
         size: {
-          value: { min: 8, max: 16 },
+          value: { min: 6, max: 12 },
         },
         rotate: {
           value: { min: 0, max: 360 },
@@ -149,7 +149,7 @@ export const CherryBlossomBackground: React.FC<CherryBlossomBackgroundProps> = (
         },
         move: {
           enable: true,
-          speed: { min: 0.5, max: 1.2 },
+          speed: { min: 0.3, max: 0.8 },
           direction: "bottom",
           random: true,
           straight: false,
@@ -176,13 +176,13 @@ export const CherryBlossomBackground: React.FC<CherryBlossomBackgroundProps> = (
           options: {
             particles: {
               number: {
-                value: 15,
+                value: 8,
               },
               size: {
-                value: { min: 6, max: 12 },
+                value: { min: 4, max: 8 },
               },
               move: {
-                speed: { min: 0.4, max: 1.0 },
+                speed: { min: 0.3, max: 0.8 },
               },
             },
           },
