@@ -5,6 +5,10 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Badge } from "@/components/ui/badge";
 import { StoryUploader } from "@/components/StoryUploader";
 import type { StoryContentType } from "@/lib/types";
@@ -104,11 +108,12 @@ export default function NewStoryPage() {
           <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
           
           <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="admin-password">
                 Admin Password *
-              </label>
+              </Label>
               <Input
+                id="admin-password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -116,11 +121,12 @@ export default function NewStoryPage() {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="story-title">
                 Story Title *
-              </label>
+              </Label>
               <Input
+                id="story-title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="The Great Adventure"
@@ -128,36 +134,39 @@ export default function NewStoryPage() {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="author">
                 Author
-              </label>
+              </Label>
               <Input
+                id="author"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
                 placeholder="Drithi"
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="description">
                 Description *
-              </label>
-              <textarea
+              </Label>
+              <Textarea
+                id="description"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="A brief description of your story..."
-                className="w-full px-3 py-2 border rounded-lg min-h-24 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                className="min-h-24"
                 required
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="label-input">
                 Labels/Categories
-              </label>
+              </Label>
               <div className="flex gap-2 mb-2">
                 <Input
+                  id="label-input"
                   value={labelInput}
                   onChange={(e) => setLabelInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addLabel())}
@@ -176,17 +185,15 @@ export default function NewStoryPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
+            <div className="flex items-center space-x-2">
+              <Checkbox
                 id="featured"
                 checked={featured}
-                onChange={(e) => setFeatured(e.target.checked)}
-                className="w-4 h-4"
+                onCheckedChange={(checked) => setFeatured(checked === true)}
               />
-              <label htmlFor="featured" className="text-sm font-medium">
+              <Label htmlFor="featured" className="cursor-pointer">
                 Featured Story
-              </label>
+              </Label>
             </div>
           </div>
         </Card>
@@ -195,47 +202,44 @@ export default function NewStoryPage() {
           <h2 className="text-xl font-semibold mb-4">Content Type</h2>
           
           <div className="space-y-4">
-            <div className="flex gap-4">
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  value="text"
-                  checked={contentType === "text"}
-                  onChange={(e) => setContentType(e.target.value as StoryContentType)}
-                  className="w-4 h-4"
-                />
-                <span>Typed Text</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="radio"
-                  value="images"
-                  checked={contentType === "images"}
-                  onChange={(e) => setContentType(e.target.value as StoryContentType)}
-                  className="w-4 h-4"
-                />
-                <span>Handwritten Pages</span>
-              </label>
-            </div>
+            <RadioGroup
+              value={contentType}
+              onValueChange={(value) => setContentType(value as StoryContentType)}
+              className="flex gap-4"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="text" id="content-text" />
+                <Label htmlFor="content-text" className="cursor-pointer">
+                  Typed Text
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="images" id="content-images" />
+                <Label htmlFor="content-images" className="cursor-pointer">
+                  Handwritten Pages
+                </Label>
+              </div>
+            </RadioGroup>
 
             {contentType === "text" ? (
-              <div>
-                <label className="block text-sm font-medium mb-2">
+              <div className="space-y-2">
+                <Label htmlFor="story-text">
                   Story Text *
-                </label>
-                <textarea
+                </Label>
+                <Textarea
+                  id="story-text"
                   value={storyText}
                   onChange={(e) => setStoryText(e.target.value)}
                   placeholder="Once upon a time..."
-                  className="w-full px-3 py-2 border rounded-lg min-h-64 focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono"
+                  className="min-h-64 font-mono"
                   required
                 />
               </div>
             ) : (
-              <div>
-                <label className="block text-sm font-medium mb-2">
+              <div className="space-y-2">
+                <Label htmlFor="story-pages">
                   Upload Story Pages *
-                </label>
+                </Label>
                 <StoryUploader onFilesChange={setStoryPages} />
               </div>
             )}
@@ -246,20 +250,20 @@ export default function NewStoryPage() {
           <h2 className="text-xl font-semibold mb-4">Images</h2>
           
           <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="cover-image">
                 Cover Image
-              </label>
+              </Label>
               <StoryUploader
                 onFilesChange={(files) => setCoverImage(files[0] || null)}
                 multiple={false}
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium mb-2">
+            <div className="space-y-2">
+              <Label htmlFor="character-photo">
                 Character Photo
-              </label>
+              </Label>
               <StoryUploader
                 onFilesChange={(files) => setCharacterPhoto(files[0] || null)}
                 multiple={false}

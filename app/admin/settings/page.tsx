@@ -18,6 +18,7 @@ import {
   CalendarDays,
   EyeOff,
 } from "lucide-react";
+import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -25,6 +26,8 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
@@ -32,6 +35,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 
 import { FESTIVALS, detectCurrentFestival, getUpcomingFestivals, getNextFestivalOccurrence, type Festival } from "@/lib/festivals";
 import type { AppSettings } from "@/lib/settings-storage";
@@ -68,6 +81,9 @@ export default function AdminSettingsPage() {
   
   // KV configuration status
   const [kvConfigured, setKvConfigured] = React.useState<boolean | null>(null);
+  
+  // Reset confirmation dialog
+  const [resetDialogOpen, setResetDialogOpen] = React.useState(false);
 
   // Load settings on mount
   React.useEffect(() => {
@@ -282,12 +298,13 @@ export default function AdminSettingsPage() {
     }
   }
 
-  // Handle reset
-  async function handleReset() {
-    if (!confirm("Reset all settings to defaults? This will affect all visitors.")) {
-      return;
-    }
-    
+  // Handle reset button click
+  function handleResetClick() {
+    setResetDialogOpen(true);
+  }
+  
+  // Handle reset confirmation
+  async function handleResetConfirm() {
     try {
       setIsSaving(true);
       
@@ -307,10 +324,14 @@ export default function AdminSettingsPage() {
       if (previewMode) {
         exitPreview();
       }
+      
+      toast.success("Settings reset to defaults");
     } catch (error) {
       console.error("Failed to reset settings:", error);
+      toast.error("Failed to reset settings");
     } finally {
       setIsSaving(false);
+      setResetDialogOpen(false);
     }
   }
 
@@ -527,9 +548,9 @@ export default function AdminSettingsPage() {
               {/* Test Mode Toggle */}
               <div className="flex items-center justify-between p-3 bg-amber-50 rounded-lg">
                 <div className="space-y-0.5">
-                  <label htmlFor="test-mode" className="text-sm font-medium">
+                  <Label htmlFor="test-mode" className="text-sm font-medium">
                     Test Mode
-                  </label>
+                  </Label>
                   <p className="text-xs text-gray-600">
                     Enable preview without saving changes
                   </p>
@@ -544,10 +565,10 @@ export default function AdminSettingsPage() {
               {/* Date Simulator */}
               {testMode && (
                 <div className="space-y-2 animate-in slide-in-from-top-2">
-                  <label htmlFor="simulate-date" className="text-sm font-medium">
+                  <Label htmlFor="simulate-date" className="text-sm font-medium">
                     Simulate Date
-                  </label>
-                  <input
+                  </Label>
+                  <Input
                     id="simulate-date"
                     type="date"
                     value={simulatedDate?.toISOString().split("T")[0] ?? ""}
@@ -555,7 +576,6 @@ export default function AdminSettingsPage() {
                       const date = e.target.value ? new Date(e.target.value + "T00:00:00") : null;
                       setSimulatedDate(date);
                     }}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
                   />
                   <p className="text-xs text-gray-500">
                     Override current date to test festival detection
@@ -627,9 +647,9 @@ export default function AdminSettingsPage() {
               {/* Auto-detect toggle */}
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <label htmlFor="auto-detect" className="text-sm font-medium">
+                  <Label htmlFor="auto-detect" className="text-sm font-medium">
                     Auto-detect Festival
-                  </label>
+                  </Label>
                   <p className="text-sm text-gray-500">
                     Automatically detect based on current date
                   </p>
@@ -645,9 +665,9 @@ export default function AdminSettingsPage() {
 
               {/* Manual festival selection */}
               <div className="space-y-2">
-                <label htmlFor="festival-select" className="text-sm font-medium">
+                <Label htmlFor="festival-select" className="text-sm font-medium">
                   Manual Festival Selection
-                </label>
+                </Label>
                 <Select
                   value={manualFestival ?? "none"}
                   onValueChange={(value) => setManualFestival(value === "none" ? null : value)}
@@ -689,9 +709,9 @@ export default function AdminSettingsPage() {
               {/* Intensity slider */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label htmlFor="intensity" className="text-sm font-medium">
+                  <Label htmlFor="intensity" className="text-sm font-medium">
                     Decoration Intensity
-                  </label>
+                  </Label>
                   <Badge variant="outline">{intensity[0]}</Badge>
                 </div>
                 <Slider
@@ -714,9 +734,9 @@ export default function AdminSettingsPage() {
               {/* Cherry blossoms toggle */}
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <label htmlFor="cherry-blossoms" className="text-sm font-medium">
+                  <Label htmlFor="cherry-blossoms" className="text-sm font-medium">
                     Cherry Blossoms
-                  </label>
+                  </Label>
                   <p className="text-sm text-gray-500">
                     Enable falling cherry blossom animations
                   </p>
@@ -733,9 +753,9 @@ export default function AdminSettingsPage() {
               {/* Festival decorations toggle */}
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <label htmlFor="festival-decor" className="text-sm font-medium">
+                  <Label htmlFor="festival-decor" className="text-sm font-medium">
                     Festival Decorations
-                  </label>
+                  </Label>
                   <p className="text-sm text-gray-500">
                     Enable festival-specific decorative elements
                   </p>
@@ -779,7 +799,7 @@ export default function AdminSettingsPage() {
                 )}
               </Button>
               <Button
-                onClick={handleReset}
+                onClick={handleResetClick}
                 variant="outline"
                 disabled={isSaving}
                 className="w-full"
@@ -1012,6 +1032,27 @@ export default function AdminSettingsPage() {
           )}
         </div>
       </div>
+
+      {/* Reset Confirmation Dialog */}
+      <AlertDialog open={resetDialogOpen} onOpenChange={setResetDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Reset all settings to defaults?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will reset all festival settings to their default values. All visitors will be affected by this change.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleResetConfirm}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              Reset to Defaults
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

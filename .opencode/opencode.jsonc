@@ -5,5 +5,12 @@
             "type": "local",
             "command": ["bunx", "-y", "chrome-devtools-mcp@latest"]
         }
+    },
+    "agent": {
+      "orchestrator": {
+        "permission": {
+         
+        }
+      }
     }
 }

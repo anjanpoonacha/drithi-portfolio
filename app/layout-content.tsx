@@ -5,6 +5,7 @@ import { FestivalThemeProvider } from "@/lib/contexts/FestivalThemeContext";
 import { Navigation } from "@/components/Navigation";
 import { CherryBlossomAccents } from "@/components/CherryBlossomAccents";
 import { FestivalDecor } from "@/components/FestivalDecor";
+import { Toaster } from "@/components/ui/sonner";
 
 interface LayoutContentProps {
   children: React.ReactNode;
@@ -28,6 +29,9 @@ export function LayoutContent({ children }: LayoutContentProps) {
       <main className="relative z-10">
         {children}
       </main>
+      
+      {/* Toast Notifications */}
+      <Toaster />
     </FestivalThemeProvider>
   );
 }

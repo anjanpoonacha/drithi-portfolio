@@ -129,6 +129,8 @@ export async function saveStoriesToBlob(stories: Story[]): Promise<string> {
   const blob = await put('stories.json', JSON.stringify({ stories }, null, 2), {
     access: 'public',
     contentType: 'application/json',
+    addRandomSuffix: false,
+    allowOverwrite: true,
   });
   return blob.url;
 }

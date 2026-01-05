@@ -3,9 +3,22 @@
 import * as React from "react";
 import Link from "next/link";
 import { Plus, Edit, Trash2, Image as ImageIcon, FileText } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import type { Story } from "@/lib/types";
 
 export default function AdminStoriesPage() {
@@ -20,6 +33,8 @@ export default function AdminStoriesPage() {
   } | null>(null);
   const [password, setPassword] = React.useState("");
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
+  const [storyToDelete, setStoryToDelete] = React.useState<string | null>(null);
 
   React.useEffect(() => {
     if (isAuthenticated) {
@@ -50,11 +65,16 @@ export default function AdminStoriesPage() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this story?")) return;
+  const handleDeleteClick = (id: string) => {
+    setStoryToDelete(id);
+    setDeleteDialogOpen(true);
+  };
+
+  const handleDeleteConfirm = async () => {
+    if (!storyToDelete) return;
 
     try {
-      const res = await fetch(`/api/stories/${id}`, {
+      const res = await fetch(`/api/stories/${storyToDelete}`, {
         method: "DELETE",
         headers: {
           "x-admin-password": password,
@@ -62,13 +82,17 @@ export default function AdminStoriesPage() {
       });
 
       if (res.ok) {
-        setStories(stories.filter((s) => s.id !== id));
+        setStories(stories.filter((s) => s.id !== storyToDelete));
         fetchStorageStats();
+        toast.success("Story deleted successfully");
       } else {
-        alert("Failed to delete story");
+        toast.error("Failed to delete story");
       }
     } catch (error) {
-      alert("Error deleting story");
+      toast.error("Error deleting story");
+    } finally {
+      setDeleteDialogOpen(false);
+      setStoryToDelete(null);
     }
   };
 
@@ -86,14 +110,17 @@ export default function AdminStoriesPage() {
         <Card className="w-full max-w-md p-8">
           <h1 className="text-2xl font-bold mb-6 text-center">Admin Login</h1>
           <form onSubmit={handleLogin} className="space-y-4">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter admin password"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-              required
-            />
+            <div className="space-y-2">
+              <Label htmlFor="admin-password">Admin Password</Label>
+              <Input
+                id="admin-password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter admin password"
+                required
+              />
+            </div>
             <Button type="submit" className="w-full">
               Login
             </Button>
@@ -226,7 +253,7 @@ export default function AdminStoriesPage() {
                   <Button
                     variant="destructive"
                     size="icon"
-                    onClick={() => handleDelete(story.id)}
+                    onClick={() => handleDeleteClick(story.id)}
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
@@ -236,6 +263,27 @@ export default function AdminStoriesPage() {
           ))}
         </div>
       )}
+
+      {/* Delete Confirmation Dialog */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This will permanently delete the story. This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDeleteConfirm}
+              className="bg-red-600 hover:bg-red-700"
+            >
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
