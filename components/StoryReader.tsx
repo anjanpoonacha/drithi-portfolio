@@ -6,6 +6,7 @@ import { Heart, Sparkles } from "lucide-react";
 
 import { DecorativeBorder } from "@/components/DecorativeBorder";
 import { FadeInSection } from "@/components/FadeInSection";
+import { HandwrittenViewer } from "@/components/HandwrittenViewer";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,7 @@ export function StoryReader({ story }: StoryReaderProps) {
   // Split story text into paragraphs
   const paragraphs = React.useMemo(() => {
     // Split by double newline or single newline
+    if (!story.story) return [];
     const parts = story.story.split(/\n\n|\n/).filter((p) => p.trim().length > 0);
     return parts;
   }, [story.story]);
@@ -93,25 +95,58 @@ export function StoryReader({ story }: StoryReaderProps) {
             ))}
           </FadeInSection>
 
-          {/* Story Text */}
+          {/* Story Content - supports multiple types */}
           <div className="prose prose-purple max-w-none pt-6">
-            {paragraphs.map((paragraph, index) => (
-              <FadeInSection
-                key={index}
-                delay={0.4 + index * 0.1}
-                className="mb-6 last:mb-0"
-              >
-                <p
-                  className={cn(
-                    "text-gray-700 text-base md:text-lg leading-relaxed",
-                    "first-letter:text-5xl first-letter:font-pacifico first-letter:text-purple-600",
-                    "first-letter:float-left first-letter:mr-2 first-letter:leading-none first-letter:mt-1"
-                  )}
-                >
-                  {paragraph}
-                </p>
+            {story.contentType === "images" && story.imageUrls ? (
+              <FadeInSection delay={0.3}>
+                <HandwrittenViewer pages={story.imageUrls} title={story.title} />
               </FadeInSection>
-            ))}
+            ) : story.contentType === "mixed" && story.mixedContent ? (
+              <div className="space-y-8">
+                {story.mixedContent
+                  .sort((a, b) => a.order - b.order)
+                  .map((content, index) => (
+                    <FadeInSection key={index} delay={0.3 + index * 0.1}>
+                      {content.type === "text" ? (
+                        <p className="text-lg leading-relaxed text-gray-800 font-body mb-6">
+                          {content.data}
+                        </p>
+                      ) : (
+                        <div className="relative w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-lg">
+                          <img
+                            src={content.data}
+                            alt={`${story.title} - Image ${index + 1}`}
+                            className="w-full h-auto"
+                          />
+                        </div>
+                      )}
+                    </FadeInSection>
+                  ))}
+              </div>
+            ) : story.story ? (
+              // Existing text story rendering
+              paragraphs.map((paragraph, index) => (
+                <FadeInSection
+                  key={index}
+                  delay={0.4 + index * 0.1}
+                  className="mb-6 last:mb-0"
+                >
+                  <p
+                    className={cn(
+                      "text-gray-700 text-base md:text-lg leading-relaxed",
+                      "first-letter:text-5xl first-letter:font-pacifico first-letter:text-purple-600",
+                      "first-letter:float-left first-letter:mr-2 first-letter:leading-none first-letter:mt-1"
+                    )}
+                  >
+                    {paragraph}
+                  </p>
+                </FadeInSection>
+              ))
+            ) : (
+              <div className="text-center py-12 text-gray-500">
+                No content available for this story.
+              </div>
+            )}
           </div>
 
           {/* Thank You Section */}

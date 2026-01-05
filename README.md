@@ -52,6 +52,30 @@ Run tests:
 bun test
 ```
 
+## 🔐 Environment Variables
+
+Copy `.env.example` to `.env.local` and configure:
+
+```bash
+cp .env.example .env.local
+```
+
+### Required Variables
+
+- `BLOB_BASE_URL` - Base URL for Vercel Blob Storage (e.g., `https://xyz.public.blob.vercel-storage.com`)
+- `BLOB_READ_WRITE_TOKEN` - Vercel Blob storage access token
+- `DRITHI_KV_REST_API_URL` - Upstash Redis REST API URL
+- `DRITHI_KV_REST_API_TOKEN` - Upstash Redis access token
+- `ADMIN_PASSWORD` - Password for admin access
+
+### Storage Paths
+
+Storage paths are configured in `lib/constants.ts`:
+- `/stories.json` - Main stories data file
+- `/stories/` - Directory for story images
+
+These paths are automatically combined with `BLOB_BASE_URL` to create full URLs.
+
 ## 📋 Project Structure
 
 See [plan.md](./plan.md) for the complete project plan and development roadmap.

@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "bun test"
+    "test": "bun test",
+    "migrate": "bun run scripts/migrate-to-blob.ts",
+    "validate-stories": "bun run scripts/validate-stories.ts"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",
@@ -35,6 +37,7 @@
     "@tsparticles/engine": "^3.9.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.9.1",
+    "@vercel/blob": "^2.0.0",
     "@vercel/kv": "^3.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
