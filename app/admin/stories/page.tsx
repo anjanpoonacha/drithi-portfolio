@@ -131,7 +131,7 @@ export default function AdminStoriesPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className="container mx-auto px-4 pt-24 md:pt-28 pb-8 max-w-6xl">
       <div className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Story Management</h1>

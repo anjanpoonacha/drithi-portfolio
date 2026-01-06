@@ -136,7 +136,7 @@ export default function EditStoryPage({ params }: EditStoryPageProps) {
 
   if (loading) {
     return (
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 pt-24 md:pt-28 pb-8 max-w-3xl">
         <div className="text-center py-12">Loading story...</div>
       </div>
     );
@@ -144,7 +144,7 @@ export default function EditStoryPage({ params }: EditStoryPageProps) {
 
   if (error && !story) {
     return (
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
+      <div className="container mx-auto px-4 pt-24 md:pt-28 pb-8 max-w-3xl">
         <div className="bg-red-50 text-red-700 p-4 rounded-lg">
           {error}
         </div>
@@ -156,7 +156,7 @@ export default function EditStoryPage({ params }: EditStoryPageProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
+    <div className="container mx-auto px-4 pt-24 md:pt-28 pb-8 max-w-3xl">
       <h1 className="text-3xl font-bold mb-8">Edit Story</h1>
 
       {error && (

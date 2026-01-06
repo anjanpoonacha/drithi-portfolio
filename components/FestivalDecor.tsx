@@ -232,7 +232,14 @@ function DecorationType({ type, count, layer = "background" }: { type: Decoratio
  * Diwali Diyas (Oil Lamps) - Enhanced with rangoli, fireworks, lanterns
  */
 function Diyas({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const decorations = React.useMemo(() => {
+    if (!mounted) return [];
     const items: Array<{
       type: string;
       id: string;
@@ -353,7 +360,9 @@ function Diyas({ count }: { count: number }) {
     });
 
     return items;
-  }, [count]);
+  }, [count, mounted]);
+  
+  if (!mounted) return null;
 
   return (
     <>
@@ -637,7 +646,14 @@ function Diyas({ count }: { count: number }) {
  * Holi Color Splashes - Enhanced with gulal, pichkari, color trails
  */
 function ColorSplashes({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const decorations = React.useMemo(() => {
+    if (!mounted) return [];
     const items: Array<{
       type: string;
       id: string;
@@ -746,7 +762,9 @@ function ColorSplashes({ count }: { count: number }) {
     });
 
     return items;
-  }, [count]);
+  }, [count, mounted]);
+  
+  if (!mounted) return null;
 
   return (
     <>
@@ -906,7 +924,14 @@ function ColorSplashes({ count }: { count: number }) {
  * Christmas Snowflakes - Enhanced with Santa hats, ornaments, candy canes, bells, holly, gifts
  */
 function Snowflakes({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const decorations = React.useMemo(() => {
+    if (!mounted) return [];
     const items: Array<{
       type: string;
       id: string;
@@ -1115,7 +1140,9 @@ function Snowflakes({ count }: { count: number }) {
     });
 
     return items;
-  }, [count]);
+  }, [count, mounted]);
+  
+  if (!mounted) return null;
 
   return (
     <>
@@ -1494,7 +1521,15 @@ function Snowflakes({ count }: { count: number }) {
  * Flower Petals (for Dussehra) - Enhanced with marigolds, bow and arrows, victory symbols
  */
 function Flowers({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const decorations = React.useMemo(() => {
+    if (!mounted) return [];
+    
     const items: Array<{
       type: string;
       id: string;
@@ -1616,7 +1651,9 @@ function Flowers({ count }: { count: number }) {
     });
 
     return items;
-  }, [count]);
+  }, [count, mounted]);
+  
+  if (!mounted) return null;
 
   return (
     <>
@@ -1834,7 +1871,14 @@ function Flowers({ count }: { count: number }) {
  * Stars (for New Year) - Enhanced with fireworks, confetti, champagne, balloons, 2026, party poppers
  */
 function Stars({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const decorations = React.useMemo(() => {
+    if (!mounted) return [];
     const items: Array<{
       type: string;
       id: string;
@@ -2012,7 +2056,9 @@ function Stars({ count }: { count: number }) {
     });
 
     return items;
-  }, [count]);
+  }, [count, mounted]);
+  
+  if (!mounted) return null;
 
   return (
     <>
@@ -2364,7 +2410,15 @@ function Stars({ count }: { count: number }) {
  * Sparkles (Universal decoration)
  */
 function Sparkles({ count }: { count: number }) {
+  const [mounted, setMounted] = React.useState(false);
+  
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+  
   const sparkles = React.useMemo(() => {
+    if (!mounted) return [];
+    
     // Use smart positioning for sparkles
     const positions = generateSmartPositions(count, {
       minSpacing: 80,
@@ -2382,7 +2436,9 @@ function Sparkles({ count }: { count: number }) {
       delay: Math.random() * 2,
       duration: 1 + Math.random() * 1.5,
     }));
-  }, [count]);
+  }, [count, mounted]);
+
+  if (!mounted) return null;
 
   return (
     <>

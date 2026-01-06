@@ -94,7 +94,7 @@ export default function NewStoryPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
+    <div className="container mx-auto px-4 pt-24 md:pt-28 pb-8 max-w-3xl">
       <h1 className="text-3xl font-bold mb-8">Add New Story</h1>
 
       {error && (
